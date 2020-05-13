@@ -8,13 +8,13 @@ createstudent = async (req, res) => {
         const Student = new student(req.body);
         const result = await Student.save({}, function (err,result){
             if (err) {
-                res.status(404).json({status:"fail",message:"already exit"});
+                res.status(500).json({status:"fail",message:"already exit"});
     
             }else if (err){
                 next(err);
             }
             else {
-                res.json({status: "success", message: "student Created successfully!!!", data: result}); 
+                res.status(200).json({status: "success", message: "student Created successfully!!!", data: result}); 
             }
         })
     }        
@@ -30,7 +30,7 @@ getAllStudent = async(req,res,next) => {
                         next(err);
                     }
                     else {
-                        res.json({status:"Pass",data:result});
+                        res.status(200).json({status:"Pass",data:result});
                     }
                 })
             }        
