@@ -10,11 +10,32 @@ describe("Testing the get all API", () => {
 
     expect(res.body.status).toBe('Pass')
 
-	});
+  });
+  
+  it("tests the find route and returns true for status", async () => {
+  
+    const res = await request.get('/student/list/5eb9ae8720a11e06ece2296f');
+
+    expect(res.body.message).toBe('Successfully find student!')
+   // expect(res.body.data).toHaveProperty("firstName","firstName")
+
+  })
+  it("tests the delete route and returns true for status", async () => {
+  
+    const res = await request.delete('/student/list/5eb9ae8720a11e06ece2296f');
+
+    expect(res.body.message).toBe('Successfully delete student!')
+  //  expect(res.body.data).toHaveProperty('ok', '1')
+
+  });
 })
 
  ///post
-  describe('Post Endpoints', () => {
+ 
+
+
+ 
+  describe('Post', () => {
     it('should create a new post', async () => {
     
       const res = await request.post('/student/create')
@@ -34,26 +55,4 @@ describe("Testing the get all API", () => {
         
      
     })
-  })
-  describe("Testing the find API", () => {
-
-    it("tests the base route and returns true for status", async () => {
-  
-      const res = await request.get('/student/list/5eb9ae8720a11e06ece2296f');
-  
-      expect(res.body.message).toBe('Successfully find student!')
-     // expect(res.body.data).toHaveProperty("firstName","firstName")
-  
-    });
-  })
-  describe("Testing the delete API", () => {
-
-    it("tests the base route and returns true for status", async () => {
-  
-      const res = await request.delete('/student/list/5eb9ae8720a11e06ece2296f');
-  
-      expect(res.body.message).toBe('Successfully delete student!')
-    //  expect(res.body.data).toHaveProperty('ok', '1')
-  
-    });
   })
